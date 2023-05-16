@@ -110,7 +110,7 @@ bool Vector<T>::contains(const T& data) const {
         return false;
     }
     
-    for (typename std::list<T>::const_iterator it = array_.begin(); it != array_.end(); ++it) {
+    for (typename std::list<T>::const_iterator it = array_.cbegin(); it != array_.cend(); ++it) {
         if ((*it) == data) {
             return true;
         }
@@ -136,11 +136,11 @@ template <class T>
 typename std::list<T>::const_iterator Vector<T>::search_(const int& index) const {
     //Keep track of how far to venture into the array since lists dont have a direct access method
     int i = 0;
-    typename std::list<T>::const_iterator it = array_.begin();
+    typename std::list<T>::const_iterator it = array_.cbegin();
 
     //Stop once you reach the desired index or the end
-    for (; ((it != array_.end()) && (i < index)); ++it) {
-        i++;
+    for (; ((it != array_.cend()) && (i < index)); ++it) {
+        ++i;
     }
 
     return it;
